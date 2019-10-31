@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="search-bar">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词"use-action-slot bind:search="onSearch">
+    </van-search>
+  </view>
+  <view class="swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imagesArray}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
+  <view class="category-item">
+    <view class="back-image">
+      <image src="https://gw.alicdn.com/tps/TB155AUPpXXXXajXVXXXXXXXXXX-1125-480.png_.webp"></image>
+    </view>
+    <view class="flex-wrp">
+          <view wx:for="{{categoryArray}}" wx:key="index" class="flex-item">
+            <image src="{{item.image}}"></image>
+            <view class="image-name">{{item.name}}</view>
+          </view>
+        </view>
+  </view>
+  <view class="category-view">
+    <view class="category-image" ><image class="image100P" src="/images/category.png"></image></view>
+    <scroll-view scroll-x="true"  class="category-product">
+      <view class="product" wx:for="{{products}}" wx:key="index">
+        <image class="product-image" src="https://img-tmdetail.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/O1CN01wLeUVI1kSOwiHvpEd_!!0-item_pic.jpg_160x160q90.jpg"></image>
+        <view class="image-name" style="text-align:left;">{{item}}螃蟹（公）2.7两</view>
+        <view class="product-price">
+          <view>
+            <view class="mainColor">¥1.8</view>
+            <view class="textDeLT hideColor">¥2.0</view>
+          </view>
+          <image class="add-image" src="/images/add.png"></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

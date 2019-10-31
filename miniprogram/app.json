@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/account/account"
+  ],
+  "window": {
+    "backgroundColor": "#eeb641",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#eeb641",
+    "navigationBarTitleText": "摩托超市",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#eeb641",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home-down.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "text": "我的",
+        "iconPath": "images/person-down.png",
+        "selectedIconPath": "images/person-active.png"
+      }]
+  },
+  "sitemapLocation": "sitemap.json"
+}
