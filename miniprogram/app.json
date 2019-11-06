@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/account/account"
+    "pages/account/account",
+    "pages/category/category",
+    "pages/shopping-cart/shopping-cart"
   ],
   "window": {
     "backgroundColor": "#eeb641",
@@ -18,6 +20,18 @@
         "text": "首页",
         "iconPath": "images/home-down.png",
         "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "images/category-down.png",
+        "selectedIconPath": "images/category-active.png"
+      },
+      {
+        "pagePath": "pages/shopping-cart/shopping-cart",
+        "text": "购物车",
+        "iconPath": "images/shopping-down.png",
+        "selectedIconPath": "images/shopping-active.png"
       },
       {
         "pagePath": "pages/account/account",

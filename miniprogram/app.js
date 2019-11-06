@@ -13,8 +13,20 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       })
+      wx.cloud.callFunction({
+        name: 'category-data'
+      }).then(res => {
+        console.log(getApp().globalData.categoryItem)
+        getApp().globalData.categoryItem = res.result.data;
+        console.log(getApp().globalData.categoryItem)
+      }).catch(err => {
+        console.log(err);
+      })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      shoppingCart: null,
+      categoryItem: null
+    }
   }
 })

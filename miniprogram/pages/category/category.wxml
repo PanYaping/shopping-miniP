@@ -1,0 +1,20 @@
+<view class="container">
+  <scroll-view scroll-y="true" class="leftSide">
+    <view wx:for="{{categoryData}}" wx:key="key" class="category-name {{index===currentCategoryIndex?'current-category-index':''}}" bindtap="changecategory" data-index="{{index}}">{{item.name}}</view>
+  </scroll-view>
+  <scroll-view scroll-y="true" class="rightSide">
+    <view class="product" wx:for="{{productList.data}}" wx:key="key">
+      <view class="product-image"><image src="{{item.thumbnail.data.url}}"></image></view>
+      <view class="product-desc">
+        <view>{{item.title}}</view>
+        <view class="product-price">
+          <view>
+            <view class="mainColor">¥1.8</view>
+            <view class="textDeLT hideColor">¥2.0</view>
+          </view>
+          <image bindtap="toCart" class="add-image" src="/images/add.png"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

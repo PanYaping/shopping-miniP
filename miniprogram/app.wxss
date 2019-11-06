@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  background: white;
+  font-size: 0.7rem;
 }
 
 view {

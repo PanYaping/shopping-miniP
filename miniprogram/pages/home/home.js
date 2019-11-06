@@ -13,14 +13,16 @@ Page({
     interval: 5000,
     duration: 1000,
     value: '',
-    products: [1,2,3,4,5]
+    products: [1,2,3,4,5],
+    animationCart1: '',
+    animationCart2: '',
+    toCartShow: false
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-    this.getCategoryList();
   },
 
   /**
@@ -72,13 +74,61 @@ Page({
 
   },
 
-  getCategoryList: function () {
-    wx.cloud.callFunction({
-      name: 'category-data'
-    }).then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err);
+  toCart: function (e) {
+    let startX = e.changedTouches[0].clientX
+    let startY = e.changedTouches[0].clientY
+    console.log(startX, startY)
+    let that = this
+    var animation3 = wx.createAnimation({
+      duration: 1,
+      timingFunction: "step-start",
+      delay: 0
+    })
+    var animation4 = wx.createAnimation({
+      duration: 1,
+      timingFunction: "step-start",
+      delay: 0
+    })
+    animation3.translateX(startX).opacity(1).step()
+    animation4.translateY(startY).step()
+    this.setData({
+      toCartShow: true,
+      animationCart1: animation3.export(),
+      animationCart2: animation4.export(),
+    }, () => {
+      // 获取tabbar购物车位置
+      let systemInfo = wx.getSystemInfoSync();
+      let targetX = systemInfo.windowWidth*5/8;
+      let targetY = systemInfo.windowHeight
+      console.log(targetX, targetY)
+      // 显示遮罩层
+      var animation1 = wx.createAnimation({
+        duration: 300,
+        timingFunction: "ease-out",
+        delay: 0
+      })
+      var animation2 = wx.createAnimation({
+        duration: 300,
+        timingFunction: "ease-in",
+        delay: 0
+      })
+      animation1.translateX(targetX).opacity(0.5).step()
+      animation2.translateY(targetY).step()
+      this.setData({
+        animationCart1: animation1.export(),
+        animationCart2: animation2.export(),
+      })
+      setTimeout(() => {
+        this.setData({
+          toCartShow: false,
+        })
+        let cartNum = getApp().globalData.shoppingCart;
+        getApp().globalData.shoppingCart = cartNum + 1;
+        wx.setTabBarBadge({
+          index: 2,
+          text: getApp().globalData.shoppingCart + ''
+        })
+      }, 300)
     })
   }
 })
