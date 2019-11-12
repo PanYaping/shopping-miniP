@@ -2,19 +2,22 @@
   <scroll-view scroll-y="true" class="leftSide">
     <view wx:for="{{categoryData}}" wx:key="key" class="category-name {{index===currentCategoryIndex?'current-category-index':''}}" bindtap="changecategory" data-index="{{index}}">{{item.name}}</view>
   </scroll-view>
-  <scroll-view scroll-y="true" class="rightSide">
-    <view class="product" wx:for="{{productList.data}}" wx:key="key">
+  <scroll-view id="rightSide_id" scroll-y="true" class="rightSide" scroll-into-view="{{intoViewId}}" bindscroll="bindscroll">
+  <view wx:for="{{categoryData}}" wx:key="key" id="{{'category_'+ index}}">
+    <view class="category-name">{{item.name}}</view>
+    <view class="product" wx:for="{{item.products.data}}" wx:key="key">
       <view class="product-image"><image src="{{item.thumbnail.data.url}}"></image></view>
       <view class="product-desc">
         <view>{{item.title}}</view>
         <view class="product-price">
           <view>
-            <view class="mainColor">¥1.8</view>
+            <view class="mainColor">¥{{item.price}}</view>
             <view class="textDeLT hideColor">¥2.0</view>
           </view>
           <image bindtap="toCart" class="add-image" src="/images/add.png"></image>
         </view>
       </view>
     </view>
+  </view>
   </scroll-view>
 </view>
