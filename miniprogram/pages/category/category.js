@@ -18,24 +18,24 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
-    this.setData({
-      categoryData: getApp().globalData.categoryItem,
-      currentCategoryIndex: 0
-    })
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function() {
-
+    this.setData({
+      currentCategoryIndex: 0
+    })
   },
 
   /**
    * Lifecycle function--Called when page show
    */
   onShow: function() {
-
+    this.setData({
+      categoryData: getApp().globalData.categoryItem,
+    })
   },
 
   /**
