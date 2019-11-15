@@ -1,7 +1,7 @@
 //app.js
 App({
-  onLaunch: function () {
-    
+  onLaunch: function() {
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -13,20 +13,25 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       })
-      wx.cloud.callFunction({
-        name: 'category-data'
-      }).then(res => {
-        console.log(getApp().globalData.categoryItem)
-        getApp().globalData.categoryItem = res.result.data;
-        console.log(getApp().globalData.categoryItem)
-      }).catch(err => {
-        console.log(err);
-      })
     }
-
+    Object.assign(global, {
+      Array: Array,
+      Date: Date,
+      Error: Error,
+      Function: Function,
+      Math: Math,
+      Object: Object,
+      RegExp: RegExp,
+      String: String,
+      TypeError: TypeError,
+      setTimeout: setTimeout,
+      clearTimeout: clearTimeout,
+      setInterval: setInterval,
+      clearInterval: clearInterval
+    });
     this.globalData = {
-      shoppingCart: null,
-      categoryItem: null
+      shoppingCart: [],
+      categoryItem: []
     }
   }
 })

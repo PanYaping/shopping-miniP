@@ -166,7 +166,7 @@ page {
   height: 100%;
 }
 
-.add-image{
+.small-image{
   width: 40rpx;
   height: 40rpx;
 }

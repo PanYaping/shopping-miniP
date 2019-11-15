@@ -1,64 +1,49 @@
 <view class="container">
   <view class="search-bar">
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词"use-action-slot bind:search="onSearch">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
     </van-search>
   </view>
   <view class="swiper">
-      <swiper indicator-dots="{{indicatorDots}}"
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{imagesArray}}" wx:key="index">
-          <swiper-item>
-            <image src="{{item}}"></image>
-          </swiper-item>
-        </block>
-      </swiper>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imagesArray}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
   <view class="category-item">
     <view class="back-image">
       <image src="https://gw.alicdn.com/tps/TB155AUPpXXXXajXVXXXXXXXXXX-1125-480.png_.webp"></image>
     </view>
     <view class="flex-wrp">
-          <view wx:for="{{categoryArray}}" wx:key="index" class="flex-item">
-            <image src="{{item.image}}"></image>
-            <view class="image-name">{{item.name}}</view>
-          </view>
-        </view>
-  </view>
-  <view class="category-view">
-    <view class="category-image" ><image class="image100P" src="/images/category.png"></image></view>
-    <scroll-view scroll-x="true"  class="category-product">
-      <view class="product" wx:for="{{products}}" wx:key="index">
-        <image class="product-image" src="https://img-tmdetail.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/O1CN01wLeUVI1kSOwiHvpEd_!!0-item_pic.jpg_160x160q90.jpg"></image>
-        <view class="image-name" style="text-align:left;">{{item}}螃蟹（公）2.7两</view>
-        <view class="product-price">
-          <view>
-            <view class="mainColor">¥1.8</view>
-            <view class="textDeLT hideColor">¥2.0</view>
-          </view>
-          <image bindtap="toCart" class="add-image" src="/images/add.png"></image>
-        </view>
+      <view wx:for="{{categoryArray}}" wx:key="index" class="flex-item">
+        <image src="{{item.image}}"></image>
+        <view class="image-name">{{item.name}}</view>
       </view>
-    </scroll-view>
+    </view>
   </view>
-  <view class="category-view">
-    <view class="category-image" ><image class="image100P" src="https://img.alicdn.com/tfs/TB1ri.MkHj1gK0jSZFuXXcrHpXa-234-92.png"></image></view>
-    <scroll-view scroll-x="true"  class="category-product">
-      <view class="product" wx:for="{{products}}" wx:key="index">
-        <image class="product-image" src="https://img.alicdn.com/imgextra/i2/190/TB2oU0EXaagSKJjy0FaXXb0dpXa_!!190-2-luban.png_240x240q90.jpg_.webp"></image>
-        <view class="image-name" style="text-align:left;">{{item}}玩具</view>
+  <view class="category-view" wx:for="{{categoryData}}" wx:key="key" wx:for-item="categoryItem" wx:for-index="categoryIndex">
+    <view class="category-image">
+      <image class="image100P" src="/images/category.png"></image>
+    </view>
+    <scroll-view scroll-x="true" class="category-product">
+      <view class="product" wx:for="{{categoryItem.products.data}}" wx:key="index">
+        <image class="product-image" src="{{item.thumbnail.data.url}}"></image>
+        <view class="image-name" style="text-align:left;">{{item.title}}</view>
         <view class="product-price">
           <view>
-            <view class="mainColor">¥1.8</view>
+            <view class="mainColor">¥¥{{item.price}}</view>
             <view class="textDeLT hideColor">¥2.0</view>
           </view>
-          <image bindtap="toCart" class="add-image" src="/images/add.png"></image>
+          <image data-item="{{item}}" data-categoryindex="{{categoryIndex}}" data-index="{{index}}" bindtap="toCart" class="small-image add-image" src="/images/add.png"></image>
         </view>
       </view>
     </scroll-view>
   </view>
   <view animation="{{animationCart2}}" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:99999;{{toCartShow?'display:block':'display:none'}}">
     <view animation="{{animationCart1}}" style="width:50rpx;height:50rpx;">
-        <image src='/images/heart.png' style="width:50rpx;height:50rpx;"></image>
+      <image src='/images/heart.png' style="width:50rpx;height:50rpx;"></image>
     </view>
-</view>
+  </view>
 </view>

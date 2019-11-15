@@ -1,4 +1,5 @@
 // Pages/category/category.js
+import { shoppingCartAdd, shoppingCartMinus } from '../../service/common.js';
 Page({
 
   /**
@@ -7,7 +8,10 @@ Page({
   data: {
     categoryData: null,
     currentCategoryIndex: null,
-    intoViewId: 'rightSide_id'
+    intoViewId: 'rightSide_id',
+    animationCart1: '',
+    animationCart2: '',
+    toCartShow: false,
   },
 
   /**
@@ -68,6 +72,90 @@ Page({
   onShareAppMessage: function() {
 
   },
+  // 减购物车
+  minusCart: function(e) {
+    let countNum = shoppingCartMinus(e.target.dataset.item, e.target.dataset.categoryindex, e.target.dataset.index)
+    this.setData({
+      categoryData: getApp().globalData.categoryItem
+    })
+    if (countNum === 0) {
+      wx.removeTabBarBadge({
+        index: 2
+      })
+    } else {
+      wx.setTabBarBadge({
+        index: 2,
+        text: countNum + ''
+      })
+    }
+    console.log(getApp().globalData.shoppingCart)
+  },
+
+  // 加购物车： 动画
+  toCart: function(e) {
+    let startX = e.changedTouches[0].clientX
+    let startY = e.changedTouches[0].clientY
+    console.log(startX, startY)
+    let that = this
+    var animation3 = wx.createAnimation({
+      duration: 1,
+      timingFunction: "step-start",
+      delay: 0
+    })
+    var animation4 = wx.createAnimation({
+      duration: 1,
+      timingFunction: "step-start",
+      delay: 0
+    })
+    animation3.translateX(startX).opacity(1).step()
+    animation4.translateY(startY).step()
+    this.setData({
+      toCartShow: true,
+      animationCart1: animation3.export(),
+      animationCart2: animation4.export(),
+    }, () => {
+      // 获取tabbar购物车位置
+      let systemInfo = wx.getSystemInfoSync();
+      let targetX = systemInfo.windowWidth * 5 / 8;
+      let targetY = systemInfo.windowHeight
+      console.log(targetX, targetY)
+      // 显示遮罩层
+      var animation1 = wx.createAnimation({
+        duration: 300,
+        timingFunction: "ease-out",
+        delay: 0
+      })
+      var animation2 = wx.createAnimation({
+        duration: 300,
+        timingFunction: "ease-in",
+        delay: 0
+      })
+      animation1.translateX(targetX).opacity(0.5).step()
+      animation2.translateY(targetY).step()
+      this.setData({
+        animationCart1: animation1.export(),
+        animationCart2: animation2.export(),
+      })
+      setTimeout(() => {
+        //添加至购物车
+        let cartOptions = shoppingCartAdd(e.target.dataset.item, getApp().globalData.shoppingCart)
+        let categoryIndex = +e.target.dataset.categoryindex;
+        let index = +e.target.dataset.index;
+        //全局数据刷新
+        getApp().globalData.categoryItem[categoryIndex].products.data[index]['count'] = cartOptions.count;
+        getApp().globalData.shoppingCart = cartOptions.products;
+        this.setData({
+          toCartShow: false,
+          categoryData: getApp().globalData.categoryItem
+        })
+        wx.setTabBarBadge({
+          index: 2,
+          text: cartOptions.countNum + ''
+        })
+        console.log(getApp().globalData.shoppingCart)
+      }, 300)
+    })
+  },
 
   changecategory: function(event) {
     let index = event.currentTarget.dataset.index;
@@ -104,7 +192,7 @@ Page({
             if (res[i + 1].top < containViewBottom && res[i + 1].top > 50) {
               item = { index: i, isbreak: true };
             }
-            if(item.isbreak || i === categoryLength -1) {
+            if (item.isbreak || i === categoryLength - 1) {
               resolve(item)
             }
           })
