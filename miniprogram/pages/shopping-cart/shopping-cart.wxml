@@ -1,2 +1,31 @@
-<!--pages/shopping-cart/shopping-cart.wxml-->
-<text>pages/shopping-cart/shopping-cart.wxml</text>
+<view class="regularFont" style="height: 100%;">
+  <view class="product-list" wx:if="{{cartList.length>0}}">
+    <view class="product-item" wx:for="{{cartList}}" wx:key="key">
+      <switch type="checkbox" checked="{{item.checked}}" />
+      <view class="product-image">
+        <image class="image100P" src="{{item.thumbnail.data.url}}"></image>
+      </view>
+      <view class="product-desc">
+        <view>{{item.title}}</view>
+        <view class="product-price">
+          <view>
+            <view class="mainColor">¥{{item.price}}</view>
+          </view>
+          <image wx:if="{{item.count}}" data-item="{{item}}" data-index="{{index}}" bindtap="minusCart" class="small-image minus-image" src="/images/minus.png"></image>
+          <text class="numberText" wx:if="{{item.count}}">{{item.count}}</text>
+          <image data-item="{{item}}" data-index="{{index}}" bindtap="toCart" class="small-image add-image" src="/images/add.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="count-all">
+    <view class="left-count">
+      <switch type="checkbox" checked="{{isCheckAll}}" />
+      <text>全选</text></view>
+    <view class="right-count">
+      <text class="hideColor">合计：</text>
+      <text class="mainColor bigFont">¥ {{amountAll}}</text>
+      <text class="text-btn bigFont">去结算</text>
+    </view>
+  </view>
+</view>

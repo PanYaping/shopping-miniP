@@ -16,6 +16,7 @@ export function shoppingCartAdd(item, productList) {
     count = productList[index]['count']
   }
   _.forEach(productList, one => {
+  	one['checked'] = true
     countNum = countNum + one.count
   })
   return { products: productList, countNum: countNum, count: count };

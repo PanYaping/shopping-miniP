@@ -8,6 +8,14 @@
   font-size: 0.7rem;
 }
 
+.regularFont {
+  font-size: 0.7rem;
+}
+
+.bigFont {
+  font-size: 0.9rem;
+}
+
 view {
   box-sizing: border-box;
 }

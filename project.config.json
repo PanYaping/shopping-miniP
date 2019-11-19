@@ -58,6 +58,13 @@
 					"id": -1,
 					"name": "pages/category/category",
 					"pathName": "pages/category/category",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopping-cart/shopping-cart",
+					"pathName": "pages/shopping-cart/shopping-cart",
 					"scene": null
 				}
 			]
