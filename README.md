@@ -4,6 +4,9 @@
     
 ```
 ![image](./miniprogram/images/home.png)
+![image](./miniprogram/images/categories.png)
+![image](./miniprogram/images/shopping-cart.png)
+![image](./miniprogram/images/account.png)
 ## 知识点整理
 
 #### 1、flex页面布局
