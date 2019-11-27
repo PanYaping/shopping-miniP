@@ -1,1 +1,91 @@
-/* pages/account/account.wxss */
+.account-header {
+  width: 100%;
+  padding: 20rpx;
+  background-image: linear-gradient(to right, #fef5ba 0%, #f0b39a 100%);
+}
+
+.header-title {
+  display: flex;
+  width: 100%;
+  height: 160rpx;
+}
+
+.header-items {
+  display: flex;
+  width: 100%;
+  height: 160rpx;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item-title {
+  text-align: center;
+}
+
+.header-avator {
+  overflow: hidden;
+  display: inline-block;
+  width: 140rpx;
+  height: 140rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-name {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 480rpx;
+  margin: 20rpx;
+}
+
+.user-type text {
+  display: inline-block;
+  padding: 5rpx;
+  border: 1rpx solid #bab3b3;
+  color: #bab3b3;
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 130rpx;
+  text-align: center;
+  margin-left: 30rpx;
+  border-radius: 20rpx;
+}
+
+.bell-image {
+  display: flex;
+  flex-grow: 2;
+  justify-content: flex-end;
+}
+
+.alert-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.orders-title {
+  padding: 20rpx;
+  border-bottom: 1px solid #EEEEE7;
+}
+
+.orders-image {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.arror-image {
+  float: right;
+  width: 30rpx;
+  height: 30rpx;
+  padding: 5rpx 0;
+}
+
+.logistics {
+  margin: 20rpx 20rpx 0 20rpx;
+  padding: 10rpx;
+  background: #F6F6F6;
+  color: #999999;
+  border-radius: 10rpx;
+}

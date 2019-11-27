@@ -1,3 +1,6 @@
+.container {
+  background: white;
+}
 .swiper, swiper{
   height: 250rpx !important;
   width: 100%;

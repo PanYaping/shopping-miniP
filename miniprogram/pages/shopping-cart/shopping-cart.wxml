@@ -1,7 +1,7 @@
 <view class="regularFont" style="height: 100%;">
   <view class="product-list" wx:if="{{cartList.length>0}}">
     <view class="product-item" wx:for="{{cartList}}" wx:key="key">
-      <switch type="checkbox" checked="{{item.checked}}" />
+      <switch type="checkbox" color="#eeb641" checked="{{item.checked}}" data-index="{{index}}"  data-item="{{item}}" bindchange="switchChange"/>
       <view class="product-image">
         <image class="image100P" src="{{item.thumbnail.data.url}}"></image>
       </view>
@@ -20,7 +20,7 @@
   </view>
   <view class="count-all">
     <view class="left-count">
-      <switch type="checkbox" checked="{{isCheckAll}}" />
+      <switch type="checkbox" color="#eeb641" checked="{{isCheckAll}}" bindchange="switchAllChange"/>
       <text>全选</text></view>
     <view class="right-count">
       <text class="hideColor">合计：</text>

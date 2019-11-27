@@ -1,2 +1,155 @@
-<!--pages/account/account.wxml-->
-<text>pages/account/account.wxml</text>
+<view class="container">
+  <view class="account-header">
+    <view class="header-title">
+      <view class="header-avator">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="header-name">
+        <open-data class="bigFont weightFont" type="userNickName"></open-data>
+        <view class="user-type">
+          <text>普通用户</text>
+        </view>
+        <view class="bell-image">
+          <image class="alert-image" src="/images/bell.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="header-items">
+      <view class="item-title">
+        <view>¥ 0</view>
+        <view>余额</view>
+      </view>
+      <view class="item-title">
+        <view>3</view>
+        <view>红包</view>
+      </view>
+      <view class="item-title">
+        <view>0</view>
+        <view>商品券</view>
+      </view>
+      <view class="item-title">
+        <view>150</view>
+        <view>金币</view>
+      </view>
+    </view>
+  </view>
+  <view style="width: 100%;">
+    <view class="card-item">
+      <view class="orders-title">
+        <text class="bigFont weightFont">我的订单</text>
+        <image class="floatR arror-image" src="/images/arrow-right.png"></image>
+        <text class="floatR" style="color: rgb(153, 153, 153);">查看全部订单
+        </text>
+      </view>
+      <view class="header-items">
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB16GolmKuSBuNjy1XcXXcYjFXa-87-87.png_60x60q90_.webp"></image>
+          </view>
+          <view>待付款</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1cwzgmMmTBuNjy1XbXXaMrVXa-87-87.png_60x60q90_.webp"></image>
+          </view>
+          <view>待发货</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1b3zgmMmTBuNjy1XbXXaMrVXa-87-87.png_60x60q90_.webp"></image>
+          </view>
+          <view>待收货</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1fOKqm_tYBeNjy1XdXXXXyVXa-87-87.png_60x60q90_.webp"></image>
+          </view>
+          <view>评价</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1fMzgmMmTBuNjy1XbXXaMrVXa-87-87.png_60x60q90_.webp"></image>
+          </view>
+          <view>退款/售后</view>
+        </view>
+      </view>
+      <view class="logistics">
+        <view style="padding: 10rpx 0;">最新物流</view>
+        <view class="flexReg">
+          <view style="padding-right: 20rpx;">
+            <image style="height: 100rpx;width: 100rpx;" src="http://gw.alicdn.com/bao/uploaded/i1/2233863991/O1CN019DuEHO1fLvCVsLaVk_!!2233863991.jpg_70x70q90_.webp"></image>
+          </view>
+          <view>
+            <view style="color: #3897E0;display: flex;">
+              <image style="height: 50rpx;width: 50rpx;" src="https://gw.alicdn.com/tfs/TB1SpeRdNGYBuNjy0FnXXX5lpXa-54-54.png_40x40q90_.webp"></image>
+              <view style="line-height: 50rpx;padding-left: 10rpx;">运输中</view>
+            </view>
+            <view>[苏州市]快件离开苏州中转部已发往苏州斜塘</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="width: 100%;">
+    <view class="card-item">
+      <view class="orders-title">
+        <text class="bigFont weightFont">必备工具</text>
+        <image class="floatR arror-image" src="/images/arrow-right.png"></image>
+        <text class="floatR" style="color: rgb(153, 153, 153);">查看全部工具
+        </text>
+      </view>
+      <view class="header-items">
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1Jcbkj4D1gK0jSZFsXXbldVXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>每日返现</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1zT0hkkT2gK0jSZPcXXcKkpXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>领券中心</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1dcYebRSD3KVjSZFqXXc4bpXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>闲置换钱</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1csUri13tHKVjSZSgXXX4QFXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>客服小密</view>
+        </view>
+      </view>
+      <view class="header-items">
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tps/TB1nVCNPpXXXXc1apXXXXXXXXXX-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>支付宝</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://img.alicdn.com/tfs/TB1oNN1bBv0gK0jSZKbXXbK2FXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>菜鸟驿站</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://img.alicdn.com/tfs/TB1zVfpj2b2gK0jSZK9XXaEgFXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>天猫农场</view>
+        </view>
+        <view class="item-title">
+          <view>
+            <image class="orders-image" src="https://gw.alicdn.com/tfs/TB1q0T8mpOWBuNjy0FiXXXFxVXa-96-96.png_70x70q90_.webp"></image>
+          </view>
+          <view>主题换肤</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

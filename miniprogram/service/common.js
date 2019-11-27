@@ -1,7 +1,7 @@
 /*公共函数*/
 
 const _ = require('../lib/lodash.min.js');
-export function shoppingCartAdd(item, productList) {
+export function shoppingCartAdd(item, productList, categoryIndex, cindex) {
   //购物车是否已经存在该商品
   let index = _.findIndex(productList, one => { return one.id === item.id });
   let countNum = 0;
@@ -9,6 +9,9 @@ export function shoppingCartAdd(item, productList) {
   if (index < 0) {
     //商品不存在
     item['count'] = 1;
+    item['categoryIndex'] = categoryIndex
+    item['index'] = cindex
+    item['checked'] = true
     count = 1;
     productList.push(item);
   } else {
@@ -16,9 +19,12 @@ export function shoppingCartAdd(item, productList) {
     count = productList[index]['count']
   }
   _.forEach(productList, one => {
-  	one['checked'] = true
+    one['checked'] = true
     countNum = countNum + one.count
   })
+  //全局数据刷新
+  getApp().globalData.categoryItem[categoryIndex].products.data[cindex]['count'] = count;
+  getApp().globalData.shoppingCart = productList;
   return { products: productList, countNum: countNum, count: count };
 }
 

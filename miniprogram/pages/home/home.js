@@ -138,12 +138,10 @@ Page({
       })
       setTimeout(() => {
         //添加至购物车
-        let cartOptions = shoppingCartAdd(e.target.dataset.item, getApp().globalData.shoppingCart)
         let categoryIndex = +e.target.dataset.categoryindex;
         let index = +e.target.dataset.index;
-        //全局数据刷新
-        getApp().globalData.categoryItem[categoryIndex].products.data[index]['count'] = cartOptions.count;
-        getApp().globalData.shoppingCart = cartOptions.products;
+        let cartOptions = shoppingCartAdd(e.target.dataset.item, getApp().globalData.shoppingCart, categoryIndex, index)
+        
         this.setData({
           toCartShow: false,
           categoryData: getApp().globalData.categoryItem

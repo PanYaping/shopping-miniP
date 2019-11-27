@@ -73,19 +73,47 @@ Page({
   onShareAppMessage: function() {
 
   },
+  switchChange: function(e) {
+    let index = +e.target.dataset.index;
+    getApp().globalData.shoppingCart[index]['checked'] = !e.target.dataset.item.checked;
+    this.refreshData();
+  },
+  switchAllChange: function(e) {
+    this.setData({
+      isCheckAll: !this.data.isCheckAll
+    })
+    _.forEach(getApp().globalData.shoppingCart, one => {
+      one.checked = this.data.isCheckAll
+    })
+    this.refreshData();
+  },
   //计算合计
   calcAmountAll: function() {
-    let amount = 0
+    let amount = 0;
+    let countNum = 0;
+    let isAllChecked = true;
     _.forEach(this.data.cartList, one => {
-      amount = amount + one.price * one.count;
+      if (one.checked) {
+        amount = amount + one.price * one.count;
+        countNum = countNum + one.count;
+      } else {
+        isAllChecked = false;
+      }
     })
     this.setData({
-      amountAll: amount
+      amountAll: amount,
+      isCheckAll: isAllChecked
+    })
+    //刷新购物车角标
+    wx.setTabBarBadge({
+      index: 2,
+      text: countNum + ''
     })
   },
   toCart: function(e) {
     let index = +e.target.dataset.index;
-    getApp().globalData.shoppingCart[index]['count'] = getApp().globalData.shoppingCart[index]['count'] + 1;
+    getApp().globalData.categoryItem[+e.target.dataset.item.categoryIndex].products.data[+e.target.dataset.item.index]['count'] = +e.target.dataset.item.count + 1
+    getApp().globalData.shoppingCart[index]['count'] = +e.target.dataset.item.count + 1;
     this.refreshData();
 
   },
@@ -93,9 +121,11 @@ Page({
     let index = +e.target.dataset.index;
     if (getApp().globalData.shoppingCart[index]['count'] === 1) {
       //remove
-      _.remove(getApp().globalData.shoppingCart, one => {return one['id'] === e.target.dataset.item['id']})
+      _.remove(getApp().globalData.shoppingCart, one => { return one['id'] === e.target.dataset.item['id'] })
+      getApp().globalData.categoryItem[+e.target.dataset.item.categoryIndex].products.data[+e.target.dataset.item.index]['count'] = undefined;
     } else {
-      getApp().globalData.shoppingCart[index]['count'] = getApp().globalData.shoppingCart[index]['count'] - 1;
+      getApp().globalData.shoppingCart[index]['count'] = +e.target.dataset.item.count - 1;
+      getApp().globalData.categoryItem[+e.target.dataset.item.categoryIndex].products.data[+e.target.dataset.item.index]['count'] = +e.target.dataset.item.count - 1;
     }
     this.refreshData();
   }

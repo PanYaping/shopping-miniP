@@ -65,6 +65,13 @@
 					"id": -1,
 					"name": "pages/shopping-cart/shopping-cart",
 					"pathName": "pages/shopping-cart/shopping-cart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/account/account",
+					"pathName": "pages/account/account",
 					"scene": null
 				}
 			]
